@@ -1,0 +1,55 @@
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace WindowsFormsApp19
+{
+    public partial class Form1 : Form
+    {
+        int k = 1;
+        public Form1()
+        {
+            InitializeComponent();
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            Output();
+        }
+
+        private void Output()
+        {
+            using (Model1 db = new Model1())
+            {
+
+                int i = db.Product.Find(k).ProductTypeID.Value;
+                label1.Text = db.ProductType.Find(i).Title + "|" + db.Product.Find(k).Title;
+                label2.Text = db.Product.Find(k).ArticleNumber.ToString();
+                label3.Text = db.Material.Find(k).Title;
+                label4.Text = db.Product.Find(k).MinCostForAgent.ToString() + "руб.";
+                k = k + 1;
+                label5.Text = db.ProductType.Find(i).Title + "|" + db.Product.Find(k).Title;
+                label6.Text = db.Product.Find(k).ArticleNumber.ToString();
+                label7.Text = db.Material.Find(k).Title;
+                label8.Text = db.Product.Find(k).MinCostForAgent.ToString() + "руб.";
+                k = k + 1;
+                label9.Text = db.ProductType.Find(i).Title + "|" + db.Product.Find(k).Title;
+                label10.Text = db.Product.Find(k).ArticleNumber.ToString();
+                label11.Text = db.Material.Find(k).Title;
+                label12.Text = db.Product.Find(k).MinCostForAgent.ToString() + "руб.";
+
+            }
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
+        }
+    }
+}
